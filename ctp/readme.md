@@ -51,10 +51,10 @@ linux环境中需要安装cmake,swig,boost
 export PYTHON_INCLUDE=/opt/app/miniconda3/include/python3.13
 export PYTHON_LIB=/opt/app/miniconda3/lib
 
-linux库规范名称需要以lib开头，创建软连接：
+linux库规范名称需要以lib开头，进行重命名：
 ```
-ln -s thostmduserapi_se.so libthostmduserapi_se.so
-ln -s thosttraderapi_se.so libthosttraderapi_se.so
+mv thostmduserapi_se.so libthostmduserapi_se.so
+mv thosttraderapi_se.so libthosttraderapi_se.so
 ```
 
 #### 编译
@@ -69,9 +69,18 @@ make
 
 #### 使用
 编译成功后，将生成的文件连同CTPAPI的so文件（thosttraderapi.so、thostmduserapi.so）拷贝到你的程序运行目录下即可：
-
 - thosttraderapi.py
 - thostmduserapi.py
 - _thostmduserapi.so
 - _thosttraderapi.so
+- libthosttraderapi.so
+- libthostmduserapi.so
+融航系统需要额外文件：
+- librohonbase.so
+- libLinuxDataCollect.so
+并执行：
+```bash
+ln -s libthosttraderapi_se.so thosttraderapi_se_6.7.2.so
+patchelf --set-rpath '$ORIGIN' libthosttraderapi_se.so
+```
   
