@@ -67,8 +67,9 @@ cmake ..
 make
 ```
 
-#### 使用
-编译成功后，将生成的文件连同CTPAPI的so文件（thosttraderapi.so、thostmduserapi.so）拷贝到你的程序运行目录下即可：
+#### 打pip包
+* 拷贝  
+编译成功后，以下文件拷贝到package/qts_ctp中：
 - thosttraderapi.py
 - thostmduserapi.py
 - _thostmduserapi.so
@@ -83,4 +84,7 @@ make
 ln -s libthosttraderapi_se.so thosttraderapi_se_6.7.2.so
 patchelf --set-rpath '$ORIGIN' libthosttraderapi_se.so
 ```
+* 安装  
+pip install . 
+
   
