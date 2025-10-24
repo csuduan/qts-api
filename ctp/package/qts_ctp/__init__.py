@@ -1,4 +1,4 @@
-__version__ = '6.7.7'
+__version__ = '6.7.2'
 __author__ = 'duanqing'
 
 from . import thostmduserapi as mdapi
